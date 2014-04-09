@@ -1,10 +1,4 @@
 <?php
-require_once("jpgraph-3.5.0b1\src\jpgraph.php");
-require_once("jpgraph-3.5.0b1\src\jpgraph_line.php");
-require_once("jpgraph-3.5.0b1\src\jpgraph_pie.php");
-require_once("jpgraph-3.5.0b1\src\jpgraph_pie3d.php");
-require_once("jpgraph-3.5.0b1\src\jpgraph_bar.php");
-require_once("jpgraph-3.5.0b1\src\jpgraph_scatter.php");
 
 class Api_IndexController extends Zend_Controller_Action
 {
@@ -20,7 +14,15 @@ class Api_IndexController extends Zend_Controller_Action
     */
     public function generateGraphAction()
     {   
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph.php");
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_line.php");
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_pie.php");
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_pie3d.php");
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_bar.php");
+        require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_scatter.php");
+
         $this->_helper->viewRenderer->setNoRender(true);
+        //$this->_helper->layout->disableLayout();
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
@@ -171,6 +173,8 @@ class Api_IndexController extends Zend_Controller_Action
     */
     public function getShippingOptionsToDestinationAction()
     {   
+        //$this->_helper->layout->disableLayout();
+        
         $this->_helper->viewRenderer->setNoRender(true);
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
@@ -188,8 +192,8 @@ class Api_IndexController extends Zend_Controller_Action
             $requestData            = json_decode($requestDataRaw, true);
                     
             //process input
-            $cropDataResponse       = $this->callApi( 'http://localhost' . $this->getBaseUrl() . "/data/cropdata.json" );
-            $shipDataResponse       = $this->callApi( 'http://localhost' . $this->getBaseUrl() . "/data/shipdata.json" );
+            $cropDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
+            $shipDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/shipdata.json" );
             
             $requestData            = json_decode($requestDataRaw, true);
             
@@ -205,14 +209,17 @@ class Api_IndexController extends Zend_Controller_Action
             //verify input
             $cropData = \Zend_Json::decode($cropDataResponse['data']['responseBody']);
             $shipData = \Zend_Json::decode($shipDataResponse['data']['responseBody']);
-
-            foreach($shipData as $ship)
+            
+            if(is_array($shipData))
             {
-                $shippingOptions = ShipmentAllocator::getShippingOptions($ship['route'], $buyerLocation, $ship['vesselName']);
-                
-                if(!empty($shippingOptions))
+                foreach($shipData as $ship)
                 {
-                    $outputData['data'][] = $shippingOptions;
+                    $shippingOptions = ShipmentAllocator::getShippingOptions($ship['route'], $buyerLocation, $ship['vesselName']);
+
+                    if(!empty($shippingOptions))
+                    {
+                        $outputData['data'][] = $shippingOptions;
+                    }
                 }
             }
             
@@ -251,6 +258,8 @@ class Api_IndexController extends Zend_Controller_Action
     {   
         $this->_helper->viewRenderer->setNoRender(true);
         
+        //$this->_helper->layout->disableLayout();
+        
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
         $outputData = array(
@@ -270,10 +279,10 @@ class Api_IndexController extends Zend_Controller_Action
             $buyerLocation          = isset($requestData['buyerLocation']) ? $requestData['buyerLocation'] : '';
             $cropType               = isset($requestData['cropType']) ? $requestData['cropType'] : null;
             
-            $cropDataResponse       = $this->callApi( 'http://localhost' . $this->getBaseUrl() . "/data/cropdata.json" );
+            $cropDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
             $cropData               = \Zend_Json::decode($cropDataResponse['data']['responseBody']);
             
-            $shippingOptionsResponse        = $this->callApi( 'http://localhost' . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => json_encode(array('buyerLocation' => $buyerLocation)) ) );
+            $shippingOptionsResponse        = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => json_encode(array('buyerLocation' => $buyerLocation)) ) );
             
             if($shippingOptionsResponse['result'] == 'success')
             {
@@ -284,7 +293,6 @@ class Api_IndexController extends Zend_Controller_Action
             {
                 $shippingOptions = array();
             }
-            
 
             //verify input
             if(empty($shippingOptions))
@@ -418,14 +426,6 @@ class Api_IndexController extends Zend_Controller_Action
 
         $client->request($method);
 
-        // The Cookie Jar automatically stores the cookies set
-        // in the response, like a session ID cookie.
-
-        // Now we can send our next request - the stored cookies
-        // will be automatically sent.
-//                $client->setUri('http://example.com/read_member_news.php');
-//                $client->request('GET');
-
         $response = $client->getLastResponse();
         
         if(!$response->isError())
@@ -453,6 +453,16 @@ class Api_IndexController extends Zend_Controller_Action
         }
         
         return $this->config->applicationSettings->baseUrl;
+    }
+    
+    private function getDomain()
+    {       
+        if(!isset($this->config))
+        {
+            $this->config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
+        }
+        
+        return $this->config->applicationSettings->domain;
     }
 }
 

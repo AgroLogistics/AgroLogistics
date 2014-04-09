@@ -89,6 +89,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
      */
     protected $_options = array(
         'cache_dir' => null,
+//        'cache_dir' => 'gs://cache',
         'file_locking' => true,
         'read_control' => true,
         'read_control_type' => 'crc32',
@@ -117,11 +118,25 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     public function __construct(array $options = array())
     {
         parent::__construct($options);
-        if ($this->_options['cache_dir'] !== null) { // particular case for this option
+           
+        
+        if(isset($_SERVER['IS_GAE']))
+        {                
+            $this->_options['cache_dir'] = 'gs://cache';
+            
             $this->setCacheDir($this->_options['cache_dir']);
-        } else {
-            $this->setCacheDir(self::getTmpDir() . DIRECTORY_SEPARATOR, false);
+        } 
+        else
+        {        
+            if ($this->_options['cache_dir'] !== null) { // particular case for this option
+
+                $this->setCacheDir($this->_options['cache_dir']);
+
+            } else {
+                $this->setCacheDir(self::getTmpDir() . DIRECTORY_SEPARATOR, false);
+            }
         }
+        
         if (isset($this->_options['file_name_prefix'])) { // particular case for this option
             if (!preg_match('~^[a-zA-Z0-9_]+$~D', $this->_options['file_name_prefix'])) {
                 Zend_Cache::throwException('Invalid file_name_prefix : must use only [a-zA-Z0-9_]');

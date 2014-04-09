@@ -2,21 +2,28 @@
 
 session_start();
 
-use Doctrine\ORM\Tools\Setup;
-
-require_once "Doctrine/ORM/Tools/Setup.php";
-
-Setup::registerAutoloadPEAR();
-
-
+  
+function myErrorHandler($errno, $errstr, $errfile, $errline) {
+    //throw new Exception($errstr, $errno);
+}
 
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
 // Define application environment
-defined('APPLICATION_ENV')
+if(defined('SERVER_SOFTWARE') || defined('IS_GAE') || isset($_SERVER['IS_GAE']))
+{
+    define('APPLICATION_ENV', 'gae');
+    
+    set_error_handler("myErrorHandler");
+}
+else
+{
+    defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
+
+}
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(

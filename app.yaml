@@ -1,0 +1,23 @@
+application: uwi-agrologistics
+version: 1
+runtime: php
+api_version: 1
+
+handlers:
+- url: /img
+  static_dir: public/img
+
+- url: /js
+  static_dir: public/js
+
+- url: /css
+  static_dir: public/css
+
+- url: /data
+  static_dir: public/data
+
+- url: /.*
+  script: public/index.php
+  
+env_variables:
+  IS_GAE: true

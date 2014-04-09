@@ -122,9 +122,9 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         
         if(isset($_SERVER['IS_GAE']))
         {                
-            $this->_options['cache_dir'] = 'gs://cache';
+            $this->_options['cache_dir'] = 'gs://cache/';
             
-            $this->setCacheDir($this->_options['cache_dir']);
+//            $this->setCacheDir($this->_options['cache_dir']);
         } 
         else
         {        

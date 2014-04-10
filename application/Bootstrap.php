@@ -2,21 +2,12 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-     public function __construct($application)
+    public function __construct($application)
     {
         parent::__construct($application);
         
-//        $this->bootstrap('cachemanager');
+        Zend_Layout::startMvc();
         
-//        $manager    = $this->getPluginResource('cachemanager')->getCacheManager();
-//        $cacheObj   = $manager->getCache('database');
-//        Zend_Registry::set('cacheObj', $cacheObj); 
-        
-//        $cacheObj = Zend_Registry::get('Core');
-//        
-//        if ($cacheObj instanceof Zend_Cache_Core) {
-//            $cacheObj->setOption('caching', false);
-//        }
     }
     
     protected function _initDoctype()

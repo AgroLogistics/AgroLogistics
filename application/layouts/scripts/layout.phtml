@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AgroLogistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/js/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    
+    <script src="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/jquery/jquery.min.js"></script>
+    <script src="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/js/bootstrap/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div id="wrap">
+        <div class="container wrap">
+            <?php  echo $this->layout()->content; ?>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright &copy;2014 AgroLogistics</p>
+        </div>
+    </div>
+</body>
+</html>

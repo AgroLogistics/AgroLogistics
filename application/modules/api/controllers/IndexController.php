@@ -22,7 +22,7 @@ class Api_IndexController extends Zend_Controller_Action
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_scatter.php");
 
         $this->_helper->viewRenderer->setNoRender(true);
-        //$this->_helper->layout->disableLayout();
+        $this->_helper->layout->disableLayout();
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
@@ -258,8 +258,6 @@ class Api_IndexController extends Zend_Controller_Action
     {   
         $this->_helper->viewRenderer->setNoRender(true);
         
-        //$this->_helper->layout->disableLayout();
-        
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
         $outputData = array(
@@ -268,7 +266,7 @@ class Api_IndexController extends Zend_Controller_Action
                                 'debug' => null, 
                                 'data' => array(), 
                                 'message' => null
-                            );
+        );
             
         try
         {
@@ -321,17 +319,6 @@ class Api_IndexController extends Zend_Controller_Action
                             $cropReapDateEnd    = new Zend_Date($harvest['availableDateEnd'], 'dd/MM/yyyy');
                             
                             $shippingDate       = new Zend_Date($option['shippingDate'], 'dd/MM/yyyy');
-//                            
-//                            var_dump($option['shippingDate']);
-//                            var_dump($cropReapDateStart->toString());
-//                            var_dump($cropReapDateEnd->toString());
-//                            var_dump($shippingDate->toString());
-//                            var_dump(
-//                                    $cropReapDateStart->isLater($shippingDate), 
-//                                    $cropReapDateEnd->isEarlier($shippingDate)
-//                                    );
-//                            
-//                            die();
                             
                             if(($cropReapDateStart->isLater($shippingDate) || $cropReapDateEnd->isEarlier($shippingDate) ))
                             {

@@ -1,5 +1,5 @@
 <?php
-class Test_IndexController extends Zend_Controller_Action
+class Test_IndexController extends AgroLogistics_Controller_Action
 {
     public function indexAction()
     {
@@ -21,15 +21,5 @@ class Test_IndexController extends Zend_Controller_Action
     public function testGetProductsAvailableAction()
     {
         $this->view->apiUrl = $this->getBaseUrl() . "/api/index/get-products-available";
-    }
-    
-    private function getBaseUrl()
-    {       
-        if(!isset($this->config))
-        {
-            $this->config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
-        }
-        
-        return $this->config->applicationSettings->baseUrl;
     }
 }

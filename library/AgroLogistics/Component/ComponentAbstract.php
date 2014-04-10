@@ -1,6 +1,6 @@
 <?php
 
-class AgroLogistics_Controller_Action extends Zend_Controller_Action
+abstract class AgroLogistics_Component_ComponentAbstract
 {
     protected function callApi($url, $parameters = array(), $method = "POST")
     {
@@ -11,11 +11,8 @@ class AgroLogistics_Controller_Action extends Zend_Controller_Action
         $responseData['data']       = array();
         $responseData['errors']     = array();
         
-        $client = new \Zend_Http_Client('' . $url, array(
-//                    'maxredirects' => 0,
-                    'timeout'      => 30,
-//                    'adapter'   => new \Zend_Http_Client_Adapter_Curl(),
-//                    'curloptions' => array(CURLOPT_FOLLOWLOCATION => true),
+        $client = new \Zend_Http_Client($url, array(
+                    'timeout'      => 30
                     ));
         
         if(isset($parameters) && isset($parameters) && is_array($parameters))
@@ -143,15 +140,16 @@ class AgroLogistics_Controller_Action extends Zend_Controller_Action
         {
             echo $ex;
         }
-
+        
         if(!empty($responseData['data']['responseBody']) && $responseData['data']['responseBody'] != null)
-        {            
+        {      
             try
             {                
                 $responseData['data']['responseBody'] = Zend_Json::decode($responseData['data']['responseBody'], true);
             } 
             catch (Exception $ex) 
             {
+//                throw $ex;     
             }
         }
         

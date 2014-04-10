@@ -1,1 +1,36 @@
+<?php
+
+
+try
+{
+    $dataString     = json_decode($this->data, true);
+    $data           = $dataString['data'];
+}
+catch(Exception $ex)
+{
+    $data = array();
+}
+
+//var_dump($data, count($data));
+
+?>
+
+<table>
+<?php 
+    foreach($data as $item)
+    {
+        
+?>        
+    <tr>
+        <td><?php echo $item['vesselName']; ?></td>
+        <td><?php echo $item['shippingDate']; ?></td>
+        <td><?php echo $item['arrivalDate']; ?></td>
+        <td><?php echo $item['shippingDuration']; ?></td>
+        <td><?php echo $item['maximumContainersAvailable']; ?></td>
+    </tr>
+<?php
+    }
+?>
+</table>
+
 

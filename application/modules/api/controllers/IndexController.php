@@ -1,6 +1,6 @@
 <?php
 
-class Api_IndexController extends Zend_Controller_Action
+class Api_IndexController extends AgroLogistics_Controller_ApiAction
 {
     public function indexAction()
     {
@@ -14,15 +14,15 @@ class Api_IndexController extends Zend_Controller_Action
     */
     public function generateGraphAction()
     {   
+        $this->_helper->viewRenderer->setNoRender(true);
+        $this->_helper->layout->disableLayout();
+        
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_line.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_pie.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_pie3d.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_bar.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_scatter.php");
-
-        $this->_helper->viewRenderer->setNoRender(true);
-        $this->_helper->layout->disableLayout();
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
@@ -36,7 +36,7 @@ class Api_IndexController extends Zend_Controller_Action
             
         try
         {
-            $requestData            = json_decode($requestDataRaw, true);
+            $requestData            = Zend_Json::decode($requestDataRaw, true);
                     
             //process input
             $title                  = isset($requestData['title']) ? $requestData['title'] : '';
@@ -173,9 +173,8 @@ class Api_IndexController extends Zend_Controller_Action
     */
     public function getShippingOptionsToDestinationAction()
     {   
-        //$this->_helper->layout->disableLayout();
-        
         $this->_helper->viewRenderer->setNoRender(true);
+        $this->_helper->layout->disableLayout();
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
@@ -189,17 +188,17 @@ class Api_IndexController extends Zend_Controller_Action
             
         try
         {
-            $requestData            = json_decode($requestDataRaw, true);
+            $requestData            = Zend_Json::decode($requestDataRaw, true);
+            
                     
             //process input
             $cropDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
             $shipDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/shipdata.json" );
             
-            $requestData            = json_decode($requestDataRaw, true);
+            $requestData            = Zend_Json::decode($requestDataRaw, true);
             
             //process input
             $buyerLocation          = isset($requestData['buyerLocation']) ? $requestData['buyerLocation'] : '';
-            
             //verify input
             if(empty($buyerLocation))
             {
@@ -207,9 +206,9 @@ class Api_IndexController extends Zend_Controller_Action
             }
             
             //verify input
-            $cropData = \Zend_Json::decode($cropDataResponse['data']['responseBody']);
-            $shipData = \Zend_Json::decode($shipDataResponse['data']['responseBody']);
-            
+            $cropData = $cropDataResponse['data']['responseBody'];
+            $shipData = $shipDataResponse['data']['responseBody'];
+                        
             if(is_array($shipData))
             {
                 foreach($shipData as $ship)
@@ -257,6 +256,7 @@ class Api_IndexController extends Zend_Controller_Action
     public function getProductsAvailableAction()
     {   
         $this->_helper->viewRenderer->setNoRender(true);
+        $this->_helper->layout->disableLayout();
         
         $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
         
@@ -271,27 +271,28 @@ class Api_IndexController extends Zend_Controller_Action
         try
         {
             
-            $requestData            = json_decode($requestDataRaw, true);
+            $requestData            = Zend_Json::decode($requestDataRaw, true);
             
             //process input
             $buyerLocation          = isset($requestData['buyerLocation']) ? $requestData['buyerLocation'] : '';
             $cropType               = isset($requestData['cropType']) ? $requestData['cropType'] : null;
             
             $cropDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
-            $cropData               = \Zend_Json::decode($cropDataResponse['data']['responseBody']);
+            $cropData               = $cropDataResponse['data']['responseBody'];
             
-            $shippingOptionsResponse        = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => json_encode(array('buyerLocation' => $buyerLocation)) ) );
             
-            if($shippingOptionsResponse['result'] == 'success')
+            
+            $shippingOptionsResponse        = $this->callApi3( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => Zend_Json::encode(array('buyerLocation' => $buyerLocation)) ) );
+                        
+            if($shippingOptionsResponse['result'] != 'failure')
             {
-                $shippingOptions = json_decode($shippingOptionsResponse['data']['responseBody'], true);
-                $shippingOptions = $shippingOptions['data'];
+                $shippingOptions = $shippingOptionsResponse['data']['responseBody']['data'];
             }
             else
             {
                 $shippingOptions = array();
             }
-
+            
             //verify input
             if(empty($shippingOptions))
             {
@@ -300,7 +301,7 @@ class Api_IndexController extends Zend_Controller_Action
             
             //verify input            
             foreach($shippingOptions as $vesselOptions)
-            {
+            {                        
                 foreach($vesselOptions as $option)
                 {
                     $vesselOptionShippingDuration = $option['shippingDuration'];
@@ -391,159 +392,6 @@ class Api_IndexController extends Zend_Controller_Action
             echo $this->processOutput($outputData);
         }
     }
-    
-    private function callApi($url, $parameters = array(), $method = "POST")
-    {
-        return $this->callApi2($url, $parameters, $method);
-        
-        $responseData               = array();
-        $responseData['result']     = 'failure';
-        $responseData['data']       = array();
-        $responseData['errors']     = array();
-        
-        $client = new \Zend_Http_Client('' . $url, array(
-//                    'maxredirects' => 0,
-                    'timeout'      => 30,
-//                    'adapter'   => new \Zend_Http_Client_Adapter_Curl(),
-//                    'curloptions' => array(CURLOPT_FOLLOWLOCATION => true),
-                    ));
-        
-        if(isset($parameters) && isset($parameters) && is_array($parameters))
-        {
-            foreach($parameters as $name => $value)
-            {
-                $client->setParameterPost($name, $value);
-            }
-        }
-
-        $client->request($method);
-
-        $response = $client->getLastResponse();
-        
-        if(!$response->isError())
-        {
-            $responseData['result'] = 'success';
-
-            $responseData['data']['status']             = $response->getStatus();
-            $responseData['data']['headers']            = $response->getHeaders();
-            $responseData['data']['responseBody']       = $response->getBody();
-        }
-        
-        return $responseData;
-    }
-    
-    private function callApi2($url, $parameters = array(), $method = "POST")
-    {
-        $responseData               = array();
-        $responseData['result']     = 'failure';
-        $responseData['data']       = array();
-        $responseData['errors']     = array();
-        
-        
-        
-        try {
-            
-            
-            $data = http_build_query($parameters);
-            
-            $context = [
-              'http' => [
-                'method' => 'POST',
-                'header' => implode("\r\n", array(
-                    'Content-type: application/x-www-form-urlencoded',
-                    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', // optional
-                    'Accept-Language: en-us,en;q=0.5', // optional
-                    'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7' // optional
-                )),
-                'content' => $data
-              ]
-            ];
-            
-            $context = stream_context_create($context);
-            
-            $responseBody = file_get_contents($url, FILE_TEXT, $context);
-                        
-            if(!empty($responseBody) && $responseBody != null)
-            {
-                $responseData['result'] = 'success';
-
-                $responseData['data']['status']             = '';//;$response->getStatus();
-                $responseData['data']['headers']            = '';//$response->getHeaders();
-                $responseData['data']['responseBody']       = $responseBody; //$response->getBody();
-            }
-        } 
-        catch (HttpException $ex) 
-        {
-            echo $ex;
-        }
-        
-//        $client = new \Zend_Http_Client('' . $url, array(
-////                    'maxredirects' => 0,
-//                    'timeout'      => 30));
-//        
-//        if(isset($parameters) && isset($parameters) && is_array($parameters))
-//        {
-//            foreach($parameters as $name => $value)
-//            {
-//                $client->setParameterPost($name, $value);
-//            }
-//        }
-//
-//        $client->request($method);
-//
-//        $response = $client->getLastResponse();
-//        
-//        if(!$response->isError())
-//        {
-//            $responseData['result'] = 'success';
-//
-//            $responseData['data']['status']             = $response->getStatus();
-//            $responseData['data']['headers']            = $response->getHeaders();
-//            $responseData['data']['responseBody']       = $response->getBody();
-//        }
-        
-        return $responseData;
-    }
-    
-    private function processOutput($outputData)
-    {                
-        return json_encode($outputData);
-    }
-    
-    private function getBaseUrl()
-    {       
-        if(!isset($this->config))
-        {
-            $this->config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
-        }
-        
-        return $this->config->applicationSettings->baseUrl;
-    }
-    
-    private function getDomain()
-    {       
-        if(!isset($this->config))
-        {
-            $this->config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
-        }
-        
-        return $this->config->applicationSettings->domain;
-    }
-}
-
-class InvalidInputException extends Exception
-{
-    
-}
-
-class InvalidChartTypeException extends Exception
-{
-    
-}
-
-class NoDataFoundException extends Exception
-{
-    
 }
 
 class ShipmentAllocator

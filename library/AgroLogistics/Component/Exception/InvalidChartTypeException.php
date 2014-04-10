@@ -4,9 +4,9 @@ class AgroLogistics_Component_Exception_InvalidChartTypeException extends Except
     protected $message = "The chart type requested is not implemented here.";
     protected $code    = "451";
     
-    public function __construct($message, $code, $previous)
+    public function __construct($message)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message);
         
         AgroLogistics_Component_ErrorHandling::logError($this->getMessage(), 'GraphGenerator');
     }

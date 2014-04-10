@@ -1,5 +1,6 @@
 [
     {
+		"cropId": "1",
         "cropType": "Yam",
         "shelfLife": "15",
         "harvests":
@@ -13,6 +14,7 @@
                 
     },
     {
+		"cropId": "2",
         "cropType": "Coconut",
         "shelfLife": "20",
         "harvests":
@@ -26,6 +28,7 @@
                 
     },
     {
+		"cropId": "3",
         "cropType": "Rice",
         "shelfLife": "820",
         "harvests":
@@ -38,6 +41,7 @@
                 
     },
     {
+		"cropId": "4",
         "cropType": "Cattle",
         "shelfLife": "20",
         "harvests":
@@ -49,6 +53,7 @@
                 
     },
     {
+		"cropId": "5",
         "cropType": "Pig",
         "shelfLife": "820",
         "harvests":
@@ -61,6 +66,7 @@
                 
     },
     {
+		"cropId": "6",
         "cropType": "Chicken",
         "shelfLife": "40",
         "harvests":
@@ -73,6 +79,7 @@
                 
     },
      {
+		"cropId": "7",
         "cropType": "Soybeans",
         "shelfLife": "60",
         "harvests":
@@ -84,6 +91,7 @@
                 
     },
     {
+		"cropId": "8",
         "cropType": "Tomatoes",
         "shelfLife": "35",
         "harvests":
@@ -97,6 +105,7 @@
                 
     },
     {
+		"cropId": "9",
         "cropType": "SugarCane",
         "shelfLife": "70",
         "harvests":
@@ -109,6 +118,7 @@
                 
     },
     {
+		"cropId": "10",
         "cropType": "Maize",
         "shelfLife": "30",
         "harvests":
@@ -122,6 +132,7 @@
                 
     },
     {
+		"cropId": "11",
         "cropType": "Eggs",
         "shelfLife": "290",
         "harvests":
@@ -135,6 +146,7 @@
                 
     },
     {
+		"cropId": "12",
         "cropType": "Potatoes",
         "shelfLife": "30",
         "harvests":

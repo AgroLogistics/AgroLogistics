@@ -116,7 +116,7 @@ class Api_IndexController extends AgroLogistics_Controller_ApiAction
             //process input
             $buyerLocation          = isset($requestData['buyerLocation']) ? $requestData['buyerLocation'] : '';
             
-            $shimentAllocator       = new AgroLogistics_Component_ShipmentAllocator();            
+            $shimentAllocator       = new AgroLogistics_Component_Ship();            
             $shippingOptions        = $shimentAllocator->getShippingOptionsToDestination($buyerLocation);
             
             $outputData['data']     = $shippingOptions;
@@ -171,7 +171,7 @@ class Api_IndexController extends AgroLogistics_Controller_ApiAction
             $buyerLocation          = isset($requestData['buyerLocation']) ? $requestData['buyerLocation'] : '';
             $cropType               = isset($requestData['cropType']) ? $requestData['cropType'] : null;
             
-            $cropAvailability       = new AgroLogistics_Component_CropAvailability();
+            $cropAvailability       = new AgroLogistics_Component_Crop();
             
             $cropsAvailableForDestination = $cropAvailability->getCropsAvailableToDestination($buyerLocation, $cropType);
             

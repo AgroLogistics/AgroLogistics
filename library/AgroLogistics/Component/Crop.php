@@ -1,13 +1,56 @@
 <?php
-
-class AgroLogistics_Component_CropAvailability extends AgroLogistics_Component_ComponentAbstract
+class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbstract
 {
+    public function getCrops()
+    {
+        $result                     = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
+        
+        $data                       = array();
+        
+        if($result['result'] == 'success' && is_array($result['data']))
+        { 
+            $data                       = $result['data']['responseBody'];
+        }
+        else
+        {
+            
+        }
+        
+        return $data;
+    }
+    
+    public function getCrop($id)
+    {
+        $result                     = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
+        
+        $data                       = array();
+        
+        if($result['result'] == 'success' && is_array($result['data']))
+        {             
+            foreach($result['data']['responseBody'] as $item)
+            {
+                if($item['cropId'] == $id)
+                {
+                    return $item;
+                }
+            }
+        }
+        else
+        {
+            
+        }
+        
+        //raise a quiet error
+        $ex = new AgroLogistics_Component_Exception_NoDataFoundException("No crop with id '$id' was found.");
+        
+        return $data;
+    }
+    
     public function getCropsAvailableToDestination($buyerLocation, $cropType)
     {
         $data = array();
         
-        $cropDataResponse                   = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/cropdata.json" );
-        $cropData                           = $cropDataResponse['data']['responseBody'];
+        $cropData = $this->getCrops();
 
         $shippingOptionsResponse            = $this->callApi3( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => Zend_Json::encode(array('buyerLocation' => $buyerLocation)) ) );
                 

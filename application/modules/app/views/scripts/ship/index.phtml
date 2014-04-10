@@ -1,0 +1,31 @@
+<table class="dataTable ship">
+    <thead>
+        <tr>
+            <td>Vessel Name</td>
+            <td>Country of Origin</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<?php 
+
+    if(is_array($this->ships))
+    { 
+        $data = $this->ships;
+        
+        foreach($data as $item)
+        {  
+?>        
+            <tr>
+                <td><?php echo $item['vesselName']; ?></td>
+                <td><?php echo $item['originCountry']; ?></td>
+                <td><a href="<?php echo $this->url(array('action' => 'view', 'controller' => 'ship', 'module' => 'app', 'shipId' => $item['shipId'])); ?>">View</a></td>
+            </tr>
+<?php
+        }
+    }
+?>
+    </tbody>
+</table>
+
+

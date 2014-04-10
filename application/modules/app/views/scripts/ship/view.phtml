@@ -1,0 +1,63 @@
+<?php
+    if(is_array($this->ship) && !empty($this->ship))
+    {
+?>
+        <label>Vessel Name:</label>
+
+        <span class="value">
+            <?php echo $this->ship['vesselName']; ?>
+        </span>
+
+        <label>Origin Country:</label>
+
+        <span class="value">
+            <?php echo $this->ship['originCountry']; ?>
+        </span>
+
+        <table class="dataTable ship">
+            <thead>
+                <tr>
+                    <td>Port Name</td>
+                    <td>Landing Date</td>
+                    <td>Departure Date</td>
+                    <td>Container Spaces</td>
+                </tr>
+            </thead>
+            <tbody>
+
+        <?php 
+
+            if(is_array($this->ship['route']))
+            { 
+                $data = $this->ship['route'];
+
+                foreach($data as $item)
+                {  
+        ?>        
+                    <tr>
+                        <td><?php echo $item['portName']; ?></td>
+                        <td><?php echo $item['landingDate']; ?></td>
+                        <td><?php echo $item['departureDate']; ?></td>
+                        <td><?php echo $item['containerSpaces']; ?></td>
+                    </tr>
+        <?php
+                }
+            }
+        ?>
+            </tbody>
+        </table>
+
+
+<?php
+    }
+    else
+    {
+?>
+        <div class="alert alert-error">
+            <p class="error">The requested item could not be found.</p>
+            
+            <p><a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'crop', 'module' => 'app', 'cropId' => null)); ?>">Click here to return to the listing.</a></p>
+        </div>
+        
+<?php
+    }

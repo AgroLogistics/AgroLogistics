@@ -3,27 +3,35 @@ class App_CropController extends AgroLogistics_Controller_Action
 {
     public function indexAction()
     {
-//        $domain = $this->getDomain();
-//        $baseUrl = $this->getBaseUrl();
-//        
-////        $cropDataResponse       = $this->callApi( 'http://uwi-agrologistics.appspot.com/api/index/get-shipping-options-to-destination' );
-//        $cropDataResponse       = $this->callApi( "http://$domain$baseUrl/api/index/get-shipping-options-to-destination", array('requestData' =>
-//                                                                                                                                            array(
-//                                                                                                                                                'buyerLocation' => 'BEI'
-//                                                                                                                                            )
-//            ));
-//        
-////        if($cropDataResponse['result'] === 'success')
-////        {
-////            $this->view->data = $cropDataResponse['data'] = '{"code":null,"data":[[{"vesselName":"Titanic","shippingDate":"15\/03\/2014","arrivalDate":"25\/03\/2014","shippingDuration":11,"maximumContainersAvailable":"9"},{"vesselName":"Titanic","shippingDate":"15\/04\/2014","arrivalDate":"25\/04\/2014","shippingDuration":11,"maximumContainersAvailable":"10"}],[{"vesselName":"Carnival","shippingDate":"15\/03\/2014","arrivalDate":"25\/03\/2014","shippingDuration":11,"maximumContainersAvailable":"4"}]],"debug":null,"message":null} ';
-////                    
-////        }
-//        
-//        
-        $errorHandling = new AgroLogistics_Component_ErrorHandling();
+        $shipmentComponent          = new AgroLogistics_Component_Crop();
+    
+        $result                     = $shipmentComponent->getCrops();
         
-        var_dump($errorHandling->logError("Test message")); 
-        die();
+        if(is_array($result))
+        { 
+            $this->view->crops          = $result;
+        }
+        else
+        {
+            $this->view->crops = null;
+        }
+            
+    }
+    
+    public function viewAction()
+    {
+        $shipmentComponent          = new AgroLogistics_Component_Crop();
+    
+        $result                     = $shipmentComponent->getCrop($this->getRequest()->getParam('cropId'));
+        
+        if(is_array($result))
+        { 
+            $this->view->crop          = $result;
+        }
+        else
+        {
+            $this->view->crop = null;
+        }
             
     }
 }

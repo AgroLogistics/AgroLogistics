@@ -1,36 +1,32 @@
-<?php
-
-
-try
-{
-    $dataString     = json_decode($this->data, true);
-    $data           = $dataString['data'];
-}
-catch(Exception $ex)
-{
-    $data = array();
-}
-
-//var_dump($data, count($data));
-
-?>
-
-<table>
-<?php 
-    foreach($data as $item)
-    {
+<table class="dataTable crop">
+    <thead>
+        <tr>
+            <td>Crop Type</td>
+            <td>Shelf Life</td>
+        </tr>
+    </thead>
+    <tbody>
         
+                
+<?php 
+
+    if(is_array($this->crops))
+    { 
+        $data = $this->crops;
+        
+        foreach($data as $item)
+        {  
 ?>        
-    <tr>
-        <td><?php echo $item['vesselName']; ?></td>
-        <td><?php echo $item['shippingDate']; ?></td>
-        <td><?php echo $item['arrivalDate']; ?></td>
-        <td><?php echo $item['shippingDuration']; ?></td>
-        <td><?php echo $item['maximumContainersAvailable']; ?></td>
-    </tr>
+            <tr>
+                <td><?php echo $item['cropType']; ?></td>
+                <td><?php echo $item['shelfLife']; ?></td>
+                <td><a href="<?php echo $this->url(array('action' => 'view', 'controller' => 'crop', 'module' => 'app', 'cropId' => $item['cropId'])); ?>">View</a></td>
+            </tr>
 <?php
+        }
     }
 ?>
+    </tbody>
 </table>
 
 

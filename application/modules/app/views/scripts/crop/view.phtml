@@ -1,0 +1,61 @@
+<?php
+    if(is_array($this->crop) && !empty($this->crop))
+    {
+?>
+        <label>Crop Type:</label>
+
+        <span class="value">
+            <?php echo $this->crop['cropType']; ?>
+        </span>
+
+        <label>Shelf Life:</label>
+
+        <span class="value">
+            <?php echo $this->crop['shelfLife']; ?>
+        </span>
+
+        <table class="dataTable crop">
+            <thead>
+                <tr>
+                    <td>Quantity</td>
+                    <td>First Reap Date</td>
+                    <td>Last Reap Date</td>
+                </tr>
+            </thead>
+            <tbody>
+
+        <?php 
+
+            if(is_array($this->crop['harvests']))
+            { 
+                $data = $this->crop['harvests'];
+
+                foreach($data as $item)
+                {  
+        ?>        
+                    <tr>
+                        <td><?php echo $item['quantity']; ?></td>
+                        <td><?php echo $item['availableDateStart']; ?></td>
+                        <td><?php echo $item['availableDateEnd']; ?></td>
+                    </tr>
+        <?php
+                }
+            }
+        ?>
+            </tbody>
+        </table>
+
+
+<?php
+    }
+    else
+    {
+?>
+        <div class="alert alert-error">
+            <p class="error">The requested item could not be found.</p>
+            
+            <p><a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'crop', 'module' => 'app', 'cropId' => null)); ?>">Click here to return to the listing.</a></p>
+        </div>
+        
+<?php
+    }

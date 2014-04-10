@@ -1,6 +1,8 @@
 [
     {
+		"shipId": "1",
         "vesselName": "Titanic",
+		"originCountry": "England",
         "route":
                 [
                     {"portName": "KIN", "landingDate": "2/03/2014", "departureDate": "3/03/2014", "containerSpaces": "24"},
@@ -36,7 +38,9 @@
                 
     },
     {
+		"shipId": "2",
         "vesselName": "Carnival",
+		"originCountry": "USA",
         "route":
                 [
                     {"portName": "KIN", "landingDate": "1/05/2014", "departureDate": "3/05/2014", "containerSpaces": "3"},
@@ -47,7 +51,9 @@
                 
     },
     {
+		"shipId": "3",
         "vesselName": "Aire",
+		"originCountry": "France",
         "route":
                 [
                     {"portName": "KIN", "landingDate": "10/06/2014", "departureDate": "3/07/2014", "containerSpaces": "9"},
@@ -60,7 +66,9 @@
                 
     },
     {
+		"shipId": "4",
         "vesselName": "Airedale",
+		"originCountry": "Germany",
         "route":
                 [
                     {"portName": "MIA", "landingDate": "4/06/2014", "departureDate": "3/07/2014", "containerSpaces": "1"},
@@ -70,7 +78,9 @@
                 
     },
     {
+		"shipId": "5",
         "vesselName": "Alacrity",
+		"originCountry": "England",
         "route":
                 [
                     {"portName": "MAR", "landingDate": "4/05/2014", "departureDate": "3/06/2014", "containerSpaces": "4"},

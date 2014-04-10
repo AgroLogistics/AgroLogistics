@@ -1,13 +1,55 @@
 <?php
-class AgroLogistics_Component_ShipmentAllocator extends AgroLogistics_Component_ComponentAbstract
+class AgroLogistics_Component_Ship extends AgroLogistics_Component_ComponentAbstract
 {
+    public function getShips()
+    {        
+        $result               = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/shipdata.json" );
+        
+        $data                 = array();
+        
+        if($result['result'] == 'success' && is_array($result['data']))
+        { 
+            $data                       = $result['data']['responseBody'];
+        }
+        else
+        {
+            
+        }
+        
+        return $data;
+    }
+    
+    public function getShip($id)
+    {
+        $result                     = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/shipdata.json" );
+        
+        $data                       = array();
+        
+        if($result['result'] == 'success' && is_array($result['data']))
+        {             
+            foreach($result['data']['responseBody'] as $item)
+            {
+                if($item['shipId'] == $id)
+                {
+                    return $item;
+                }
+            }
+        }
+        else
+        {
+            
+        }
+        
+        //raise a quiet error
+        $ex = new AgroLogistics_Component_Exception_NoDataFoundException("No ship with id '$id' was found.");
+        
+        return $data;
+    }
+    
     public function getShippingOptionsToDestination($buyerLocation)
     {
         $data = array();
-        
-        //process input
-        $shipDataResponse       = $this->callApi( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/data/shipdata.json" );
-        
+               
         //verify input
         if(empty($buyerLocation))
         {
@@ -15,7 +57,7 @@ class AgroLogistics_Component_ShipmentAllocator extends AgroLogistics_Component_
         }
 
         //verify input
-        $shipData = $shipDataResponse['data']['responseBody'];
+        $shipData = $this->getShips();
         
         if(is_array($shipData))
         {

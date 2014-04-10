@@ -12,6 +12,9 @@ handlers:
 
 - url: /css
   static_dir: public/css
+  
+- url: /theme
+  static_dir: public/theme
 
 - url: /data
   static_dir: public/data

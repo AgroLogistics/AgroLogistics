@@ -24,5 +24,125 @@
                     {"quantity": "60", "availableDateStart": "05/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
                 ]
                 
+    },
+    {
+        "cropType": "Rice",
+        "shelfLife": "820",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Cattle",
+        "shelfLife": "20",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "15/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "19/03/2014", "availableDateEnd": "24/03/2014", "source": "1"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Pig",
+        "shelfLife": "820",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Chicken",
+        "shelfLife": "40",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+     {
+        "cropType": "Soybeans",
+        "shelfLife": "60",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Tomatoes",
+        "shelfLife": "35",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "SugarCane",
+        "shelfLife": "70",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Maize",
+        "shelfLife": "30",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Eggs",
+        "shelfLife": "290",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "9432", "availableDateStart": "11/03/2014", "availableDateEnd": "21/03/2014", "source": "1"},
+                    {"quantity": "12493", "availableDateStart": "03/03/2014", "availableDateEnd": "11/03/2014", "source": "2"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
+    },
+    {
+        "cropType": "Potatoes",
+        "shelfLife": "30",
+        "harvests":
+                [
+                    {"quantity": "8392", "availableDateStart": "12/03/2014", "availableDateEnd": "17/03/2014", "source": "5"},
+                    {"quantity": "4120", "availableDateStart": "02/03/2014", "availableDateEnd": "09/03/2014", "source": "6"},
+                    {"quantity": "3043", "availableDateStart": "01/03/2014", "availableDateEnd": "08/03/2014", "source": "9"}
+                ]
+                
     }
 ]

@@ -1,0 +1,50 @@
+body {
+  background-color: #efe9d0;
+  font: 400 44px/1.38 Dosis;
+  color: rgb(0,0,0);
+}
+
+.content_container {
+  width: 80%;
+  height: 525px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #b6b29e;
+  box-shadow: 0 0 5px rgba(62, 62, 62, 0.27) inset;
+}
+
+.home-logo {
+  display: block;
+  float: left;
+  width: 62px;
+  min-width: 62px;
+  max-width: 62px;
+  height: 62px;
+  min-height: 62px;
+  max-height: 62px;
+  border-radius: 10px;
+  box-shadow: 0 -4px 0 #dbdbdb inset;
+  font-size: 40px;
+  background: url("../img/logo.png") center center no-repeat;
+  background-size: 35px 39px;
+  background-position-y: 8px;
+  background-color: rgb(252,252,252);
+}
+
+.title {
+  float: left;
+  width: 28.0208333333%;
+  height: 62px;
+  min-height: 62px;
+  margin-left: 2.0833333333%;
+  font-weight: 400;
+  line-height: 1.38;
+  color: rgb(0,0,0);
+}
+
+.title_block {
+  width: 80%;
+  height: 85px;
+  margin: 80px auto 0;
+  padding-bottom: 20px;
+}

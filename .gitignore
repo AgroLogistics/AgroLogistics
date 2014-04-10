@@ -1,2 +1,8 @@
 /nbproject/private/
 *.mcw
+
+*.sublime-project
+
+*.sublime-workspace
+
+*.gitignore

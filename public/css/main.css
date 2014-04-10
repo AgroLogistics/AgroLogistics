@@ -7,3 +7,9 @@ and open the template in the editor.
     Created on : Apr 9, 2014, 4:50:12 PM
     Author     : Dean
 */
+
+.container.agroMainContent,
+#footer
+{
+    font-size: 14px;
+}

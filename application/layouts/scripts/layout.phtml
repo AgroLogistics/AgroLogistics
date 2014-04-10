@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/theme/css/index-grid.css">
   <link rel="stylesheet" href="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/theme/css/index.css">
   
+  <link rel="stylesheet" href="<?php  echo Zend_controller_front::getInstance()->getBaseUrl(); ?>/css/main.css">
+  
 </head>
 <body class="body index clearfix">
     <div class="title_block clearfix">
@@ -20,7 +22,9 @@
         <h1 class="title">AGROLOGISTICS</h1>
     </div>
     <div class="content_container">
-        <?php echo $this->layout()->content; ?>
+        <div class="container agroMainContent">
+            <?php echo $this->layout()->content; ?>
+        </div>
     </div>
 
 

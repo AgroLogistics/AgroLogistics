@@ -6,7 +6,7 @@ class AgroLogistics_Component_Exception_InvalidChartTypeException extends Except
     
     public function __construct($message)
     {
-        parent::__construct($message);
+        parent::__construct($message ? $message : $this->message);
         
         AgroLogistics_Component_ErrorHandling::logError($this->getMessage(), 'GraphGenerator');
     }

@@ -52,7 +52,7 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
         
         $cropData = $this->getCrops();
 
-        $shippingOptionsResponse            = $this->callApi3( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination", array('requestData' => Zend_Json::encode(array('buyerLocation' => $buyerLocation)) ) );
+        $shippingOptionsResponse            = $this->callApi3( 'http://' . $this->getDomain() . ':' . $_SERVER['SERVER_PORT'] . $this->getBaseUrl() . "/api/ship/get-shipping-options-to-destination", array('requestData' => Zend_Json::encode(array('buyerLocation' => $buyerLocation)) ) );
                 
         if($shippingOptionsResponse['result'] != 'failure')
         {

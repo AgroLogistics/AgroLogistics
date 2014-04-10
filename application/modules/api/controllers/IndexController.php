@@ -1,7 +1,7 @@
 <?php
 
 class Api_IndexController extends AgroLogistics_Controller_ApiAction
-{
+{    
     public function indexAction()
     {
         

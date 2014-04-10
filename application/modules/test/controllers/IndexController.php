@@ -10,16 +10,16 @@ class Test_IndexController extends AgroLogistics_Controller_Action
     
     public function testGenerateGraphAction()
     {
-        $this->view->apiUrl = $this->getBaseUrl() . "/api/index/generate-graph";
+        $this->view->apiUrl = $this->getBaseUrl() . "/api/graph-generator/generate-graph";
     }
     
     public function testGetShippingOptionsToDestinationAction()
     {
-        $this->view->apiUrl = $this->getBaseUrl() . "/api/index/get-shipping-options-to-destination";
+        $this->view->apiUrl = $this->getBaseUrl() . "/api/ship/get-shipping-options-to-destination";
     }
     
     public function testGetProductsAvailableAction()
     {
-        $this->view->apiUrl = $this->getBaseUrl() . "/api/index/get-products-available";
+        $this->view->apiUrl = $this->getBaseUrl() . "/api/crop/get-products-available";
     }
 }

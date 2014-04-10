@@ -56,7 +56,7 @@ Sample Output:
 Endpoint
 --------
 
-http://uwi-agrologistics.appspot.com/api/index/generate-graph
+http://uwi-agrologistics.appspot.com/api/graph-generator/generate-graph
 
 
 Tests

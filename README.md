@@ -57,3 +57,9 @@ Endpoint
 --------
 
 http://uwi-agrologistics.appspot.com/api/index/generate-graph
+
+
+Tests
+-----
+
+http://uwi-agrologistics.appspot.com/test/index/test-generate-graph

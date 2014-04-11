@@ -43,7 +43,54 @@ body {
 .content_container {
 
 }
-
+.form-signin {
+    padding: 20px;
+    margin: 0px auto;
+    position: relative;
+    width: 360px;
+}.form-signin h2 {
+    padding-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+}.form-signin input, placeholder {
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.5;
+}.form-signin label {
+    display: inline;
+    height: 45px;
+    background-color: rgb(214, 214, 214);
+    overflow: hidden;
+    border-radius: 10px;
+    width: calc(100% - 111px);
+    font-size: 23px;
+    line-height: 1.8;
+    box-shadow: inset 0px 0px 5px 0px rgba(27, 27, 27, 0.23);
+    margin-bottom: 40px;
+    border: 1px solid rgb(165, 165, 165);
+    margin-right: 11px;
+    float: left;
+}.form-signin label > input{
+    height: 14px;
+    position: relative;
+    top: 10px;
+    left: 20px;
+}.form-signin label > span {
+    margin-left: 30px;
+}
+.form-signin .btn {
+    display: inline;
+    background-color: #f3c351;
+    background-image: none;
+    font-size: 25px;
+    box-shadow: inset 0px -4px 0 0px #CFA133;
+    border: none;
+    line-height: 1;
+    padding-bottom: 14px;
+    padding-top: 7px;
+    float: right;
+}
 .view-label {
     display: block;
     margin-left: 20px;

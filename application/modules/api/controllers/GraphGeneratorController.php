@@ -17,7 +17,7 @@ class Api_GraphGeneratorController extends AgroLogistics_Controller_ApiAction
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_bar.php");
         require_once(APPLICATION_PATH . '/../library/' . "jpgraph-3.5.0b1/src/jpgraph_scatter.php");
         
-        $requestDataRaw = isset($_REQUEST['requestData']) && is_string($_REQUEST['requestData']) ? $_REQUEST['requestData'] : '{}';
+        $requestDataRaw = $this->getRequest()->getParam('requestData');
         
         $outputData = array(
                                 'code' => null, 
@@ -29,6 +29,7 @@ class Api_GraphGeneratorController extends AgroLogistics_Controller_ApiAction
             
         try
         {
+//            var_dump($requestDataRaw);die();
             $requestData            = Zend_Json::decode($requestDataRaw, true);
                     
             //process input

@@ -71,9 +71,10 @@
 		"originCountry": "Germany",
         "route":
                 [
-                    {"portName": "MIA", "landingDate": "4/06/2014", "departureDate": "3/07/2014", "containerSpaces": "1"},
-                    {"portName": "GER", "landingDate": "22/09/2014", "departureDate": "11/10/2014", "containerSpaces": "2"},
-                    {"portName": "BEI", "landingDate": "11/12/2014", "departureDate": "17/12/2014", "containerSpaces": "3"}
+                    {"portName": "KIN", "landingDate": "10/06/2014", "departureDate": "11/07/2014", "containerSpaces": "9"},
+                    {"portName": "MIA", "landingDate": "17/06/2014", "departureDate": "18/06/2014", "containerSpaces": "7"},
+                    {"portName": "GER", "landingDate": "10/07/2014", "departureDate": "12/07/2014", "containerSpaces": "1"},
+                    {"portName": "BEI", "landingDate": "30/8/2014", "departureDate": "31/08/2014", "containerSpaces": "3"}
                 ]
                 
     },
@@ -83,10 +84,11 @@
 		"originCountry": "England",
         "route":
                 [
-                    {"portName": "MAR", "landingDate": "4/05/2014", "departureDate": "3/06/2014", "containerSpaces": "4"},
-                    {"portName": "BAR", "landingDate": "29/02/2014", "departureDate": "10/03/2014", "containerSpaces": "6"},
-                    {"portName": "STL", "landingDate": "14/08/2014", "departureDate": "17/08/2014", "containerSpaces": "8"},
-                    {"portName": "CUR", "landingDate": "19/03/2014", "departureDate": "20/03/2014", "containerSpaces": "4"}
+                    {"portName": "KIN", "landingDate": "10/05/2014", "departureDate": "12/05/2014", "containerSpaces": "9"},
+                    {"portName": "MAR", "landingDate": "16/05/2014", "departureDate": "18/05/2014", "containerSpaces": "4"},
+                    {"portName": "BAR", "landingDate": "20/05/2014", "departureDate": "22/05/2014", "containerSpaces": "6"},
+                    {"portName": "STL", "landingDate": "25/05/2014", "departureDate": "27/05/2014", "containerSpaces": "8"},
+                    {"portName": "CUR", "landingDate": "30/05/2014", "departureDate": "31/05/2014", "containerSpaces": "4"}
                 ]
                 
     }

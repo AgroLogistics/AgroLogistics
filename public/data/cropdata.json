@@ -2,7 +2,7 @@
     {
 		"cropId": "1",
         "cropType": "Yam",
-        "shelfLife": "15",
+        "shelfLife": "10",
         "harvests":
                 [
                     {"quantity": "10000", "availableDateStart": "1/04/2014", "availableDateEnd": "4/04/2014", "source": "1"},

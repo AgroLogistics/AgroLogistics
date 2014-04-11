@@ -40,10 +40,53 @@ and open the template in the editor.
     background-size: 30px 34.5px;
     background-position: 14% 39%;
    float: right;
-
+}
+.menu .order {
+    padding-left: 56px;
+    padding-right: 20px;
+    background: white;
+    background-image: url("../img/orders.png");
+    background-repeat: no-repeat;
+    background-size: 34px 35.5px;
+    background-position: 13% 41%;
+   float: right;
 }
 
-
+@media all and (max-width: 1056px) {
+    .menu {
+        font-size: 0px;
+    }
+    .menu .ship {
+    background: white;
+    width: 62px;
+    height: 62px;
+    background-image: url("../img/ship.png");
+    background-repeat: no-repeat;
+    background-size: 32px 33px;
+    background-position: 47% 39%;
+    float: right;
+    }
+    .menu .crop {
+    background: white;
+    width: 62px;
+    height: 62px;
+    background-image: url("../img/crop.png");
+    background-repeat: no-repeat;
+    background-size: 30px 34.5px;
+    background-position: 47% 39%;
+    float: right;
+    }
+    .menu .order {
+    background: white;
+    width: 62px;
+    height: 62px;
+    background-image: url("../img/orders.png");
+    background-repeat: no-repeat;
+    background-size: 34px 35.5px;
+    background-position: 47% 41%;
+    float: right;
+    }
+}
 
 body {
     font-size: 19px;

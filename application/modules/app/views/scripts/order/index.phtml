@@ -52,7 +52,6 @@
     </thead>
     <tbody>
         
-                
 <?php 
 
     if(is_array($this->crops))
@@ -61,17 +60,19 @@
         
         foreach($data as $item)
         {  
-?>        
-            <tr>
-                <td><?php echo $item['cropType']; ?></td>
-                <td><?php echo $item['maximumQuantity']; ?></td>
-                <td><?php echo $item['dateAvailable']; ?></td>
-                <td><a href="<?php echo $this->url(array('action' => 'confirm-order', 'controller' => 'order', 'module' => 'app', 'cropId' => $item['cropId'], 'maximumQuantity' => $item['maximumQuantity'])); ?>">Place Order</a></td>
-            </tr>
+?>          
+                <tr>
+                    <td><?php echo $item['cropType']; ?></td>
+                    <td><?php echo $item['maximumQuantity']; ?></td>
+                    <td><?php echo $item['dateAvailable']; ?></td>
+                    <td><a href="<?php echo $this->url(array('action' => 'confirm-order', 'controller' => 'order', 'module' => 'app', 'cropId' => $item['cropId'], 'maximumQuantity' => $item['maximumQuantity'])); ?>">Place Order</a></td>
+                </tr>
 <?php
         }
     }
 ?>
+
+
     </tbody>
 </table>
 

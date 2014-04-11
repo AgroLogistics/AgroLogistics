@@ -62,6 +62,8 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
         {
             $shippingOptions = array();
         }
+        
+        $currentDate = new Zend_Date();
 
         //verify input
         if(empty($shippingOptions))
@@ -92,7 +94,11 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
                             
                             $shippingDate       = new Zend_Date($option['shippingDate'], 'dd/MM/yyyy');
                             
-                            if(($cropReapDateStart->isLater($shippingDate) || $cropReapDateEnd->isEarlier($shippingDate) ))
+                            if(
+                                    $shippingDate->isEarlier($currentDate) 
+                                    ||
+                                    !($shippingDate->isLater($cropReapDateStart) && $shippingDate->isEarlier($cropReapDateEnd) )
+                                )
                             {
                                 continue;
                             }

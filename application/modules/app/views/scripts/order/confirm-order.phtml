@@ -1,0 +1,32 @@
+<?php 
+    
+    if(
+            !empty($this->cropType) && 
+            !empty($this->orderQuantity) 
+        )
+    {
+
+?>
+
+    <div>
+        <h3>Place Order?</h3>
+
+        <p>Are you sure that you want to order <?php echo $this->orderQuantity ?> units of <?php echo $this->cropType ?> </p>
+    </div>
+
+    
+<a href="<?php echo $this->url(array('action' => 'order-confirmed', 'controller' => 'order', 'module' => 'app', 'cropId' => null, 'maximumQuantity' => null)); ?>"><button>Confirm</button></a>
+<a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'order', 'module' => 'app', 'cropId' => null, 'maximumQuantity' => null)); ?>"><button>Cancel</button></a>
+
+<?php
+    }
+    else
+    {
+?>
+    
+    <div class="alert alert-info">
+        <p class="error">Could not find the order specified.</p>
+    </div
+<?php
+    }
+?>

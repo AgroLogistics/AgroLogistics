@@ -33,4 +33,9 @@ class App_OrderController extends AgroLogistics_Controller_Action
             $this->view->crops          = null;
         }
     }
+    
+    public function confirmOrderAction()
+    {
+        
+    }
 }

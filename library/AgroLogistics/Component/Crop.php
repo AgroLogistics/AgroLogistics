@@ -105,6 +105,7 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
                                                         );
 
                                 $data[] = array(
+                                    'cropId'          => $cropDataItem['cropId'],
                                     'cropType'          => $cropDataItem['cropType'],
                                     'maximumQuantity'   => $quantityAvailable,
                                     'dateAvailable'     => $option['arrivalDate']

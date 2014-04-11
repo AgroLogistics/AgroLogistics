@@ -1,42 +1,40 @@
 <div>
     <form method="GET">
-    
-    <label>Location</label>
-    <div class="value">
-        <select name="buyerLocation">
-<?php
-            $this->locations = array('', 'HAV', 'MIA', 'GER', 'BEI', 'MAR', 'BAR', 'STL', 'CUR');
-            
-            foreach($this->locations as $location)
-            {
-?>
-            <option value="<?php echo $location; ?>" <?php echo $selected = !empty($this->buyerLocation) && $this->buyerLocation == $location ? 'selected' : ''; ?>><?php echo $location; ?></option>
-<?php
-            }
-?>
-        </select>
+    <div class="order-select">
+            <label>Location</label>
+            <div class="value">
+                <select name="buyerLocation" placeholder="Select a location">
+        <?php
+                    $this->locations = array('', 'HAV', 'MIA', 'GER', 'BEI', 'MAR', 'BAR', 'STL', 'CUR');
+                    
+                    foreach($this->locations as $location)
+                    {
+        ?>
+                    <option value="<?php echo $location; ?>" <?php echo $selected = !empty($this->buyerLocation) && $this->buyerLocation == $location ? 'selected' : ''; ?>><?php echo $location; ?></option>
+        <?php
+                    }
+        ?>
+                </select>
+            </div>
+           
+            <label>Crop Type</label>
+            <div class="value">
+                <select name="cropType" placeholder="Select a crop">
+        <?php
+                    $this->cropTypes = array('', 'Rice', 'Cattle', 'Pig', 'Soybeans', 'Tomatoes', 'SugarCane', 'Yam', 'Coconuts', 'Maize', 'Eggs', 'Potatoes');
+                    
+                    foreach($this->cropTypes as $cropType)
+                    {
+        ?>
+                    <option value="<?php echo $cropType; ?>" <?php echo $selected = !empty($this->cropType) && $this->cropType == $cropType ? 'selected' : ''; ?>><?php echo $cropType; ?></option>
+        <?php
+                    }
+        ?>
+                </select>
+            </div>   
+                <button class="btn" type="submit">Go</button>
+        </form>
     </div>
-   
-    <label>Crop Type</label>
-    <div class="value">
-        <select name="cropType">
-<?php
-            $this->cropTypes = array('', 'Rice', 'Cattle', 'Pig', 'Soybeans', 'Tomatoes', 'SugarCane', 'Yam', 'Coconuts', 'Maize', 'Eggs', 'Potatoes');
-            
-            foreach($this->cropTypes as $cropType)
-            {
-?>
-            <option value="<?php echo $cropType; ?>" <?php echo $selected = !empty($this->cropType) && $this->cropType == $cropType ? 'selected' : ''; ?>><?php echo $cropType; ?></option>
-<?php
-            }
-?>
-        </select>
-    </div>
-    
-        
-        <button type="submit">Go</button>
-    </form>
-    
 </div>
 
 <table class="dataTable crop">

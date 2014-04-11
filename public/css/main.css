@@ -171,6 +171,51 @@ body {
     padding-top: 7px;
     float: right;
 }
+.order-select {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: inset 0px -4px 0px 0px #dbdbdb;
+}.order-select label {
+    font-size: 20px;
+    display: inline;
+    padding-right: 5px;
+    padding-left: 20px;
+    position: relative;
+    top: 2px;
+}.order-select .value {
+    position: relative;
+    color: black;
+    display: inline-block;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+}.order-select select {
+    background: whitesmoke;
+    border-radius: 5px;
+    text-indent: 10px;
+    width: 120px;
+}.order-select .btn {
+    display: inline;
+    background-color: #f3c351;
+    background-image: none;
+    font-size: 15px;
+    box-shadow: inset 0px -4px 0 0px #CFA133;
+    border: none;
+    line-height: 1;
+    margin: 0px auto;
+    position: relative;
+    padding: 6px 15px 10px 15px;
+    border-radius: 5px;
+    color: rgb(129, 100, 73);
+    float: right;
+    margin-right: 20px;
+}
+
 .view-label {
     display: block;
     margin-left: 20px;

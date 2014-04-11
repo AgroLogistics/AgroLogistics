@@ -8,6 +8,45 @@ and open the template in the editor.
     Author     : Dean
 */
 
+
+.menu {
+   position: relative;
+   font-size: 28px; 
+}.menu a{
+    color: rgb(0,0,0);
+    border-radius: 10px;
+    box-shadow: inset 0px -4px 0px 0px #dbdbdb;
+    padding-bottom: 16px;
+    padding-top: 10px;
+    margin-left: 20px;
+    position: relative;
+    top: 8px;
+}.menu a:hover{
+    background-color: #f3c351;
+    box-shadow: inset 0px -4px 0 0px #CFA133;
+}.menu .ship {
+    padding-left: 65px;
+    padding-right: 20px;
+    background: white;
+    background-image: url("../img/ship.png");
+    background-repeat: no-repeat;
+    background-size: 32px 33px;
+    background-position-x: 19px;
+    background-position-y: 11px;
+}
+.menu .crop {
+    padding-left: 69px;
+    padding-right: 20px;
+    background: white;
+    background-image: url("../img/crop.png");
+    background-repeat: no-repeat;
+    background-size: 32px 33px;
+    background-position-x: 20px;
+    background-position-y: 11px;
+}
+
+
+
 body {
     font-size: 19px;
     overflow-x: hidden;
@@ -125,7 +164,10 @@ table {
     background-color: #F1F1ED;
 }tr:nth-child(2n+1) {
     background: #E7E6E0;
-}td {
+}tr:hover {
+    background: #f3c351;
+}
+td {
     max-height: 30px;
     padding-top: 5px;
     padding-bottom: 5px;

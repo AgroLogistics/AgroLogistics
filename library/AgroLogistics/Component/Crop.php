@@ -63,12 +63,12 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
             $shippingOptions = array();
         }
         
-        $currentDate = new Zend_Date();
-
+        $currentDate = new DateTime();
+            
         //verify input
         if(empty($shippingOptions))
-        {
-            throw new AgroLogistics_Component_Exception_NoDataFoundException();
+        {   
+            throw new AgroLogistics_Component_Exception_NoDataFoundException(Zend_Json::encode($shippingOptionsResponse));
         }
         
         if(is_array($shippingOptions) && is_array($cropData))       
@@ -89,15 +89,15 @@ class AgroLogistics_Component_Crop extends AgroLogistics_Component_ComponentAbst
                         foreach($cropDataItem['harvests'] as $harvest)
                         {                    
                             //if shipping date is between the harvest dates
-                            $cropReapDateStart  = new Zend_Date($harvest['availableDateStart'], 'dd/MM/yyyy');
-                            $cropReapDateEnd    = new Zend_Date($harvest['availableDateEnd'], 'dd/MM/yyyy');
+                            $cropReapDateStart  = DateTime::createFromFormat('d/m/Y', $harvest['availableDateStart']);
+                            $cropReapDateEnd    = DateTime::createFromFormat('d/m/Y', $harvest['availableDateEnd']);
                             
-                            $shippingDate       = new Zend_Date($option['shippingDate'], 'dd/MM/yyyy');
+                            $shippingDate       = DateTime::createFromFormat('d/m/Y', $option['shippingDate']);
                             
                             if(
-                                    $shippingDate->isEarlier($currentDate) 
+                                    $shippingDate->getTimestamp() < $currentDate->getTimestamp()
                                     ||
-                                    !($shippingDate->isLater($cropReapDateStart) && $shippingDate->isEarlier($cropReapDateEnd) )
+                                    !($shippingDate->getTimestamp() > $cropReapDateStart->getTimestamp() && $shippingDate->getTimestamp() < $cropReapDateEnd->getTimestamp() )
                                 )
                             {
                                 continue;

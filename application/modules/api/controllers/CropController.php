@@ -61,7 +61,7 @@ class Api_CropController extends AgroLogistics_Controller_ApiAction
         }
         catch(AgroLogistics_Component_Exception_NoDataFoundException $ex)
         {   
-            $this->_response->setHttpResponseCode(422);
+//            $this->_response->setHttpResponseCode(422);
             
             $outputData['code']       = $ex->getCode();
             $outputData['message']    = 'Error: ' . $ex->getMessage();
@@ -70,7 +70,7 @@ class Api_CropController extends AgroLogistics_Controller_ApiAction
         }
         catch(Exception $ex)
         {
-            $this->_response->setHttpResponseCode(422);
+//            $this->_response->setHttpResponseCode(422);
             
             $outputData['code']       = $ex->getCode();
             $outputData['message']    = 'Error: ' . $ex->getMessage();

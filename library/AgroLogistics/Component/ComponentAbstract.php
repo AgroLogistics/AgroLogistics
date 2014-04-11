@@ -56,7 +56,7 @@ abstract class AgroLogistics_Component_ComponentAbstract
                 'method' => 'POST',
                 'header' => implode("\r\n", array(
                     'Content-type: application/x-www-form-urlencoded',
-                    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', // optional
+                    'Accept: text/html,application/json;q=0.9,*/*;q=0.8', // optional
                     'Accept-Language: en-us,en;q=0.5', // optional
                     'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7' // optional
                 )),
@@ -80,7 +80,7 @@ abstract class AgroLogistics_Component_ComponentAbstract
         } 
         catch (HttpException $ex) 
         {
-            echo $ex;
+            $responseData['errors'] = $responseData['errors'] . ' || ' . $ex->getMessage();
         }
 
         if(!empty($responseData['data']['responseBody']) && $responseData['data']['responseBody'] != null)
@@ -91,6 +91,7 @@ abstract class AgroLogistics_Component_ComponentAbstract
             } 
             catch (Exception $ex) 
             {
+                $responseData['errors'] = $responseData['errors'] . ' || ' . $ex->getMessage();
             }
         }
         
@@ -138,7 +139,7 @@ abstract class AgroLogistics_Component_ComponentAbstract
         } 
         catch (HttpException $ex) 
         {
-            echo $ex;
+            $responseData['errors'] = $responseData['errors'] . ' || ' . $ex->getMessage();
         }
         
         if(!empty($responseData['data']['responseBody']) && $responseData['data']['responseBody'] != null)
@@ -149,7 +150,7 @@ abstract class AgroLogistics_Component_ComponentAbstract
             } 
             catch (Exception $ex) 
             {
-//                throw $ex;     
+                $responseData['errors'] = $responseData['errors'] . ' || ' . $ex->getMessage();
             }
         }
         

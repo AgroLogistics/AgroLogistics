@@ -2,9 +2,9 @@
 
 session_start();
 
-  
 function myErrorHandler($errno, $errstr, $errfile, $errline) {
-    //throw new Exception($errstr, $errno);
+//    throw new Exception("$errstr $errfile $errline", $errno);
+    
 }
 
 // Define path to application directory

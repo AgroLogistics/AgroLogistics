@@ -38,19 +38,23 @@ class Api_ShipController extends AgroLogistics_Controller_ApiAction
         }
         catch(AgroLogistics_Component_Exception_InvalidInputException $ex)
         {   
-            $this->_response->setHttpResponseCode(422);            
+//            $this->_response->setHttpResponseCode(422);            
             
             $outputData['code']       = $ex->getCode();
             $outputData['message']    = 'Error: ' . $ex->getMessage();
         }
         catch(Exception $ex)
         {
-            $this->_response->setHttpResponseCode(422);            
+//            $this->_response->setHttpResponseCode(422);            
             
             $outputData['code']       = $ex->getCode();
             $outputData['message']    = 'Error: ' . $ex->getMessage();
             
         }
+        
+//        $outputData['message'] .= $requestDataRaw;
+//        
+//        var_dump($outputData);die();
         
         //generat output
         echo $this->processOutput($outputData);

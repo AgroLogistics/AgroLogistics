@@ -1,4 +1,5 @@
 <div>
+<<<<<<< HEAD
     <form method="GET">
     <div class="order-select">
             <label>Location</label>
@@ -31,12 +32,16 @@
                     }
         ?>
                 </select>
-            </div>   
-                <button class="btn" type="submit">Go</button>
+        </div>   
+        <button class="btn" type="submit">Go</button>
         </form>
     </div>
 </div>
 
+<?php
+    if(!empty($this->buyerLocation))
+    {
+?>
 <table class="dataTable crop">
     <thead>
         <tr>
@@ -62,7 +67,7 @@
                 <td><?php echo $item['cropType']; ?></td>
                 <td><?php echo $item['maximumQuantity']; ?></td>
                 <td><?php echo $item['dateAvailable']; ?></td>
-                <td><a href="<?php echo $this->url(array('action' => 'view', 'controller' => 'crop', 'module' => 'app', 'cropId' => $item['cropId'])); ?>">Order</a></td>
+                <td><a href="<?php echo $this->url(array('action' => 'confirm-order', 'controller' => 'crop', 'module' => 'app', 'cropId' => $item['cropId'], 'maximumQuantity' => $item['maximumQuantity'])); ?>">Order</a></td>
             </tr>
 <?php
         }
@@ -71,4 +76,14 @@
     </tbody>
 </table>
 
-
+<?php
+    }
+    else
+    {
+?>
+        <div class="alert alert-info">
+            <p class="error">Please choose your location from above to get started.</p>
+        </div>
+<?php
+    }
+?>

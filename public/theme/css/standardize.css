@@ -275,7 +275,6 @@ input,
 select,
 textarea {
     font-family: inherit; /* 1 */
-    font-size: 100%; /* 2 */
     font-weight: inherit; /* 1 */
     margin: 0; /* 3 */
     padding: 0;
@@ -429,7 +428,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   outline: 0;
   font-weight: inherit;
   font-style: inherit;
-  font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
 }

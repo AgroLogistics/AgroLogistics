@@ -1,19 +1,21 @@
 <?php
     if(is_array($this->ship) && !empty($this->ship))
     {
-?>
-        <label>Vessel Name:</label>
+?>      
+        <div class="view-label">
+            <label>Vessel Name:</label>
 
-        <span class="value">
-            <?php echo $this->ship['vesselName']; ?>
-        </span>
+            <span class="value">
+                <?php echo $this->ship['vesselName']; ?>
+            </span>
 
-        <label>Origin Country:</label>
+            <label>Origin Country:</label>
 
-        <span class="value">
-            <?php echo $this->ship['originCountry']; ?>
-        </span>
-
+            <span class="value">
+                <?php echo $this->ship['originCountry']; ?>
+            </span>
+        </div>
+        
         <table class="dataTable ship">
             <thead>
                 <tr>

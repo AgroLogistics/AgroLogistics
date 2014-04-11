@@ -1,18 +1,19 @@
 <?php
     if(is_array($this->crop) && !empty($this->crop))
     {
-?>
-        <label>Crop Type:</label>
+?>      <div class="view-label">
+            <label>Crop Type:</label>
 
-        <span class="value">
-            <?php echo $this->crop['cropType']; ?>
-        </span>
+            <span class="value">
+                <?php echo $this->crop['cropType']; ?>
+            </span>
 
-        <label>Shelf Life:</label>
+            <label>Shelf Life:</label>
 
-        <span class="value">
-            <?php echo $this->crop['shelfLife']; ?>
-        </span>
+            <span class="value">
+                <?php echo $this->crop['shelfLife']; ?>
+            </span>
+        </div>
 
         <table class="dataTable crop">
             <thead>

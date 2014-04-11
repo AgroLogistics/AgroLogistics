@@ -25,7 +25,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 -4px 0 #dbdbdb inset;
   font-size: 40px;
-  background: url("../img/logo.png") center center no-repeat;
+  background: url("../../img/logo.png") center center no-repeat;
   background-size: 35px 39px;
   background-position-y: 8px;
   background-color: rgb(252,252,252);
@@ -38,7 +38,7 @@ body {
   min-height: 62px;
   margin-left: 2.0833333333%;
   font-weight: 400;
-  line-height: 1.38;
+  line-height: 1.58;
   color: rgb(0,0,0);
 }
 

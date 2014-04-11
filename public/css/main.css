@@ -8,8 +8,86 @@ and open the template in the editor.
     Author     : Dean
 */
 
-.container.agroMainContent,
+body {
+    font-size: 19px;
+    overflow-x: hidden;
+}
+.content_container {
+    height: 100%;
+}
 #footer
 {
-    font-size: 14px;
+    display: block;
+    position: relative;
+    bottom: 0px;
+    width: 80%;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
 }
+
+.dataTable {
+    position: relative;
+    margin: 0px auto;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/*Override of Bootstrap*/
+.container {
+    width: 100%;
+}
+.content_container {
+
+}
+
+.view-label {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: inset 0px -4px 0px 0px #dbdbdb;
+}.view-label label {
+    font-size: 22px;
+    display: inline;
+    color: rgb(175, 175, 175);
+    padding-right: 5px;
+    padding-left: 20px;
+    position: relative;
+    top: -12px;
+}.view-label .value {
+    font-size: 22px;
+    position: relative;
+    top: -12px;
+}
+
+table {
+    background: #E7E6E0;
+    margin: 20px;
+}thead {
+    font-size: 24px;
+}thead tr:first-child {
+    background-color: #F5F4EF !important;
+}tr {
+    background-color: #F1F1ED;
+}tr:nth-child(2n+1) {
+    background: #E7E6E0;
+}td {
+    max-height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+
+
+
+

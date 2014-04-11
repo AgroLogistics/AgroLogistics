@@ -11,7 +11,7 @@ and open the template in the editor.
 
 .menu {
    position: relative;
-   font-size: 28px; 
+   font-size: 26px; 
 }.menu a{
     color: rgb(0,0,0);
     border-radius: 10px;
@@ -20,7 +20,6 @@ and open the template in the editor.
     padding-top: 10px;
     margin-left: 20px;
     position: relative;
-    top: 8px;
 }.menu a:hover{
     background-color: #f3c351;
     box-shadow: inset 0px -4px 0 0px #CFA133;
@@ -31,18 +30,19 @@ and open the template in the editor.
     background-image: url("../img/ship.png");
     background-repeat: no-repeat;
     background-size: 32px 33px;
-    background-position-x: 19px;
-    background-position-y: 11px;
+    background-position: 11% 39%; 
+    float: right;
 }
 .menu .crop {
-    padding-left: 69px;
+    padding-left: 56px;
     padding-right: 20px;
     background: white;
     background-image: url("../img/crop.png");
     background-repeat: no-repeat;
-    background-size: 32px 33px;
-    background-position-x: 20px;
-    background-position-y: 11px;
+    background-size: 30px 34.5px;
+    background-position: 14% 39%;
+   float: right;
+     
 }
 
 

@@ -27,7 +27,7 @@ body {
   font-size: 40px;
   background: url("../../img/logo.png") center center no-repeat;
   background-size: 40px 45px;
-  background-position-y: 6px;
+  background-position-y: 32%;
   background-color: rgb(252,252,252);
 }
 

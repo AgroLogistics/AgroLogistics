@@ -7,8 +7,6 @@ and open the template in the editor.
     Created on : Apr 9, 2014, 4:50:12 PM
     Author     : Dean
 */
-
-
 .menu {
    position: relative;
    font-size: 26px; 
@@ -42,7 +40,7 @@ and open the template in the editor.
     background-size: 30px 34.5px;
     background-position: 14% 39%;
    float: right;
-     
+
 }
 
 
@@ -152,6 +150,34 @@ body {
     position: relative;
     top: -12px;
 }
+
+.testing_api {
+    padding: 30px;
+    background: white;
+    margin: 30px;
+    border-radius: 20px;
+}.testing_api h1{
+    padding-bottom: 25px;
+}.testing_api textarea {
+    padding: 20px 10px 20px 10px;
+    background-color: whitesmoke;
+    border: 1px solid #ebebeb;
+}.testing_api .btn {
+    display: block;
+    background-color: #f3c351;
+    background-image: none;
+    font-size: 25px;
+    box-shadow: inset 0px -4px 0 0px #CFA133;
+    border: none;
+    line-height: 1;
+    margin: 0px auto;
+    position: relative;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: rgb(129, 100, 73);
+    margin-top: 20px;
+}
+
 
 table {
     background: #E7E6E0;

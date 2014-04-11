@@ -1,20 +1,19 @@
 
 <form action="<?php echo $this->apiUrl; ?>" method="POST">
-    <h1>AgroLogistics Reporting Component Test</h1>
+    <div class="testing_api">
+        <h1>AgroLogistics Reporting Component Test</h1>
 
-    <textarea id="requestData" name="requestData" rows="10" cols="280" style="width: 100%;">
-{
-    "title": "New Title",
-    "data": [12,235,436,34,34,343],
-    "xAxisTitle": "Weeks",
-    "yAxisTitle": "Production",
-    "width": 600,
-    "height": 200,
-    "chartType": "line"
-}
-    </textarea>
-
-    <br />
-
-    <input type="submit" name="SUBMIT" value="Call Api" />
+        <textarea id="requestData" name="requestData" rows="10" cols="280" style="width: 100%;">
+        {
+            "title": "New Title",
+            "data": [12,235,436,34,34,343],
+            "xAxisTitle": "Weeks",
+            "yAxisTitle": "Production",
+            "width": 600,
+            "height": 200,
+            "chartType": "line"
+        }
+        </textarea>
+        <input class="btn" type="submit" name="SUBMIT" value="Call Api" />
+    </div>
 </form>
